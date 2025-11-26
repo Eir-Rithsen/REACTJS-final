@@ -1,9 +1,15 @@
+import React from "react";
+import { Helmet } from "react-helmet";
+
 export default function Home() {
   return (
-    <div>
-      <h1>Bienvenido a la tienda</h1>
-      <p>Usa el menú para navegar.</p>
-    </div>
+    <section>
+      <Helmet>
+        <title>Tienda - Home</title>
+        <meta name="description" content="Tienda de ejemplo - Preentrega" />
+      </Helmet>
+      <h1>Bienvenido a la Tienda</h1>
+      <p>Usa el menú para explorar productos, ver el carrito o ingresar al admin.</p>
+    </section>
   );
 }
-
