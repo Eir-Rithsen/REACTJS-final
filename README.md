@@ -1,11 +1,11 @@
 # REACTJS-final
-src/
- ├── components/
- │    ├── Navbar.jsx
- │    ├── ProductCard.jsx
- │    ├── ProductList.jsx
- │    ├── Loader.jsx
- │    ├── ModalConfirm.jsx
+## src/
+#### ├── components/
+##### │    ├── Navbar.jsx
+##### │    ├── ProductCard.jsx
+##### │    ├── ProductList.jsx
+##### │    ├── Loader.jsx
+##### │    ├── ModalConfirm.jsx
  │    └── ...
  │
  ├── contexts/
