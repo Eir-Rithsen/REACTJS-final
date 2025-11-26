@@ -5,7 +5,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useCart } from "../contexts/CartContext";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 
-// Definimos el estilo con styled-components para cumplir el requisito de diseño
+
 const NavContainer = styled.nav`
   background: #111;
   color: #fff;
@@ -49,7 +49,7 @@ export default function Navbar() {
           <FaShoppingCart /> <span className="badge bg-primary ms-1">{cart.length}</span>
         </NavLink>
         
-        {/* Enlace Admin visible solo si hay usuario, o público según prefieras, pero protegido por ruta */}
+        {/* Enlace Admin visible solo si hay usuario, o público según se elija, pero protegido por ruta */}
         <NavLink to="/admin">Admin</NavLink>
 
         {user ? (
