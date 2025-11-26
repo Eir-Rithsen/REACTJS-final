@@ -1,33 +1,66 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components"; // Importamos styled-components
 import { useAuth } from "../contexts/AuthContext";
 import { useCart } from "../contexts/CartContext";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
+
+// Definimos el estilo con styled-components para cumplir el requisito de diseño
+const NavContainer = styled.nav`
+  background: #111;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: color 0.3s;
+    
+    &:hover {
+      color: #0077ff; /* Color primario al pasar el mouse */
+    }
+    
+    &.active {
+      font-weight: bold;
+      color: #0077ff;
+    }
+  }
+`;
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const { cart } = useCart();
 
   return (
-    <nav className="navbar-custom">
+    <NavContainer>
       <div className="d-flex align-items-center">
-        <Link to="/" className="navbar-brand text-white">E-Commerce</Link>
+        <Link to="/" className="navbar-brand text-white" style={{ fontWeight: 700, fontSize: '1.25rem' }}>
+          E-Commerce
+        </Link>
       </div>
       <div>
-        <NavLink to="/productos" className="me-3">Productos</NavLink>
-        <NavLink to="/carrito" className="me-3">
-          <FaShoppingCart /> <span className="badge bg-primary">{cart.length}</span>
+        <NavLink to="/productos">Productos</NavLink>
+        
+        <NavLink to="/carrito">
+          <FaShoppingCart /> <span className="badge bg-primary ms-1">{cart.length}</span>
         </NavLink>
-        <NavLink to="/admin" className="me-3">Admin</NavLink>
+        
+        {/* Enlace Admin visible solo si hay usuario, o público según prefieras, pero protegido por ruta */}
+        <NavLink to="/admin">Admin</NavLink>
+
         {user ? (
           <>
-            <span className="me-2"><FaUser /> {user.name}</span>
+            <span className="me-3 text-white-50"><FaUser /> {user.name}</span>
             <button className="btn btn-sm btn-outline-light" onClick={logout}>Logout</button>
           </>
         ) : (
-          <NavLink to="/login" className="btn btn-sm btn-light">Login</NavLink>
+          <NavLink to="/login" className="btn btn-sm btn-light text-dark">Login</NavLink>
         )}
       </div>
-    </nav>
+    </NavContainer>
   );
 }
